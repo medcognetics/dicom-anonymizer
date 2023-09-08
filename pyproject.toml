@@ -1,0 +1,66 @@
+[build-system]
+requires = ["pdm-pep517>=1.0"]
+build-backend = "pdm.pep517.api"
+
+[project]
+name = "dicom-anonymizer"
+version = '1.0.7'
+description = 'Program to anonymize dicom files with default and custom rules'
+authors = [
+  { name = "Laurenn Lam", email = "laurenn.lam@kitware.com" },
+  { name = "Scott Chase Waggener", email = "chase@medcognetics.com" },
+  { name = "Tim Cogan", email = "tim@medcognetics.com" },
+]
+
+dependencies = [
+    "pydicom",
+    "tqdm",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "Apache" }
+dynamic = ["version"]
+
+[tool.autoflake]
+remove-all-unused-imports = true
+remove-unused-variables = true
+
+[tool.autopep8]
+max_line_length = 120
+ignore = "E203,E231,E305,E402,E721,E722,E741,F401,F403,F405,F821,F841,F999,W503"
+recursive = true
+aggressive = 3
+in-place = true
+
+[tool.black]
+line-length = 120
+target-version = ['py37']
+
+[tool.isort]
+ensure_newline_before_comments = true
+force_grid_wrap = 0
+include_trailing_comma = true
+line_length = 119
+lines_after_imports = 2
+multi_line_output = 3
+use_parentheses = false
+
+[tool.pyright]
+
+[tool.pdm]
+version = { source = "scm" }
+
+[tool.pdm.dev-dependencies]
+test = ["pytest", "pytest-mock", "pytest-cov", "coverage", "pdbpp"]
+quality = ["autoflake", "autopep8", "black", "flake8", "isort"]
+
+[tool.pytest.ini_options]
+markers = ["ci_skip"]
+filterwarnings = [
+  "ignore:.*Invalid value for VR.*:UserWarning",
+  "ignore:.*in the dataset does not match the component precision.*:UserWarning",
+  "ignore:.*doesn't match the JPEG 2000 data.*:UserWarning",
+]
+
+[project.scripts]
+dicom-anonymizer = "dicomanonymizer.anonymizer:main"
