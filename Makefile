@@ -33,7 +33,6 @@ deploy: ## installs from lockfile
 	pdm venv create -n $(PROJECT)-deploy
 	pdm install --production --no-lock
 
-
 init: ## pulls submodules and initializes virtual environment
 	git submodule update --init --recursive
 	which pdm || pip install --user pdm
