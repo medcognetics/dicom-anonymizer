@@ -296,13 +296,19 @@ def anonymize_dicom_file(in_file: str, out_file: str, extra_anonymization_rules:
     dataset.save_as(out_file)
 
 
-def anonymize_dataset(dataset: pydicom.Dataset, extra_anonymization_rules: dict = None, deletePrivateTags: bool = True) -> None:
+def anonymize_dataset(
+    dataset: pydicom.Dataset, 
+    extra_anonymization_rules: dict = None, 
+    deletePrivateTags: bool = True,
+    handle_exceptions: bool = True,
+) -> None:
     """
     Anonymize a pydicom Dataset by using anonymization rules which links an action to a tag
 
     :param dataset: Dataset to be anonymize
     :param extra_anonymization_rules: Rules to be applied on the dataset
     :param delete_private_tags: Define if private tags should be delete or not
+    :param handle_exceptions: Delete tag if an exception is raised during anonymization
     """
     current_anonymization_actions = initialize_actions()
 
@@ -310,7 +316,13 @@ def anonymize_dataset(dataset: pydicom.Dataset, extra_anonymization_rules: dict 
         current_anonymization_actions.update(extra_anonymization_rules)
 
     for tag, action in current_anonymization_actions.items():
-        action(dataset, tag)
+        try:
+            action(dataset, tag)
+        except Exception:
+            if handle_exceptions:
+                dataset.pop(tag, None)
+            else:
+                raise
 
     # X - Private tags = (0xgggg, 0xeeee) where 0xgggg is odd
     if deletePrivateTags:
