@@ -1,5 +1,5 @@
 [build-system]
-requires = ["pdm-pep517>=1.0", "setuptools"]
+requires = ["pdm-pep517>=1.0", "setuptools>=69.0.2"]
 build-backend = "pdm.pep517.api"
 
 [project]
@@ -44,8 +44,6 @@ line_length = 119
 lines_after_imports = 2
 multi_line_output = 3
 use_parentheses = false
-
-[tool.pyright]
 
 [tool.pdm]
 version = { source = "scm" }
