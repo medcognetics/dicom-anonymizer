@@ -1,0 +1,24 @@
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@1.0.2
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.10-node
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: make init
+      - when:
+          condition:
+            equal: [ fork, << pipeline.git.branch >> ]
+          steps:
+            - run: make pypi
+
+workflows:
+  test:
+    jobs:
+      - test
