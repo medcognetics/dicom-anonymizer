@@ -1,0 +1,23 @@
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[project]
+name = "dicom-anon"
+description = "Program to anonymize dicom files with default and custom rules."
+requires-python = ">=3.9"
+authors = [{ name = "MedCognetics" }]
+dependencies = ["pydicom", "tqdm"]
+readme = "README.md"
+license = { text = "MIT" }
+dynamic = ["version"]
+
+[tool.pdm.version]
+source = "file"
+path = "dicomanonymizer/version.py"
+
+[tool.pdm.dev-dependencies]
+dist = ["build", "twine"]
+
+[project.scripts]
+dicomanonymizer = "dicomanonymizer.anonymizer:main"
