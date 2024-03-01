@@ -1,4 +1,5 @@
 Data
 env
 __pycache__
+dist
 .pdm-python
