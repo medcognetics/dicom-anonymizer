@@ -3,7 +3,7 @@ requires = ["pdm-pep517>=1.0", "setuptools>=69.0.2"]
 build-backend = "pdm.pep517.api"
 
 [project]
-name = "dicom-anonymizer"
+name = "dicom-anon"
 description = 'Program to anonymize dicom files with default and custom rules'
 authors = [
     { name = "Laurenn Lam", email = "laurenn.lam@kitware.com" },
