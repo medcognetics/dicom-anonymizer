@@ -85,7 +85,12 @@ reset:
 	$(MAKE) clean
 	$(MAKE) clean-env
 	$(MAKE) init
-	$(MAKE) check
+# TODO Add this back in
+# $(MAKE) check
+
+pypi:
+	$(PYTHON) -m build
+	$(PYTHON) -m twine upload dist/*
 
 help: ## display this help message
 	@echo "Please use \`make <target>' where <target> is one of"

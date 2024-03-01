@@ -4,19 +4,14 @@ build-backend = "pdm.pep517.api"
 
 [project]
 name = "dicom-anonymizer"
-version = '1.0.7'
 description = 'Program to anonymize dicom files with default and custom rules'
 authors = [
-  { name = "Laurenn Lam", email = "laurenn.lam@kitware.com" },
-  { name = "Scott Chase Waggener", email = "chase@medcognetics.com" },
-  { name = "Tim Cogan", email = "tim@medcognetics.com" },
+    { name = "Laurenn Lam", email = "laurenn.lam@kitware.com" },
+    { name = "Scott Chase Waggener", email = "chase@medcognetics.com" },
+    { name = "Tim Cogan", email = "tim@medcognetics.com" },
 ]
 
-dependencies = [
-    "pydicom",
-    "tqdm",
-    "setuptools>=69.0.2",
-]
+dependencies = ["pydicom", "tqdm", "setuptools>=69.0.2"]
 requires-python = ">=3.8"
 readme = "README.md"
 license = { text = "Apache" }
@@ -46,19 +41,21 @@ lines_after_imports = 2
 multi_line_output = 3
 use_parentheses = false
 
-[tool.pdm]
-version = { source = "scm" }
+[tool.pdm.version]
+source = "file"
+path = "dicomanonymizer/version.py"
 
 [tool.pdm.dev-dependencies]
 test = ["pytest", "pytest-mock", "pytest-cov", "coverage", "pdbpp"]
 quality = ["autoflake", "autopep8", "black", "flake8", "isort"]
+dist = ["build", "twine"]
 
 [tool.pytest.ini_options]
 markers = ["ci_skip"]
 filterwarnings = [
-  "ignore:.*Invalid value for VR.*:UserWarning",
-  "ignore:.*in the dataset does not match the component precision.*:UserWarning",
-  "ignore:.*doesn't match the JPEG 2000 data.*:UserWarning",
+    "ignore:.*Invalid value for VR.*:UserWarning",
+    "ignore:.*in the dataset does not match the component precision.*:UserWarning",
+    "ignore:.*doesn't match the JPEG 2000 data.*:UserWarning",
 ]
 
 [project.scripts]
