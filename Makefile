@@ -23,7 +23,7 @@ clean: ## remove cache files
 	find $(CLEAN_DIRS) -name '*.pyc' -type f -delete
 	find $(CLEAN_DIRS) -name '*,cover' -type f -delete
 	find $(CLEAN_DIRS) -name '*.orig' -type f -delete
-	rm -r dist
+	rm -rf dist
 
 clean-env: ## remove the virtual environment directory
 	pdm venv remove -y $(PROJECT)
