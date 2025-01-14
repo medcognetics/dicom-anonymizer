@@ -160,7 +160,7 @@ def parse_dictionary_argument(dictionary_argument, new_anonymization_actions):
 
 
 def main():
-    version_info = metadata.version("dicom_anonymizer")
+    version_info = metadata.version("dicom-anon")
     parser = argparse.ArgumentParser(add_help=True)
     parser.add_argument(
         "input",

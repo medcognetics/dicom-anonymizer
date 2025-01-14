@@ -6,3 +6,6 @@ build
 *.egg-info
 .python-version
 dist
+.pdm-python
+node_modules/
+.coverage
