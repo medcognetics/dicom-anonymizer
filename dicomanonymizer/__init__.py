@@ -1,2 +1,13 @@
-from dicomanonymizer.simpledicomanonymizer import *  # noqa: F401, F403
-from dicomanonymizer.anonymizer import anonymize  # noqa: F401
+import importlib.metadata
+
+from dicomanonymizer.anonymizer import anonymize
+from dicomanonymizer.simpledicomanonymizer import *  # noqa
+
+
+__version__ = importlib.metadata.version("dicom-anon")
+
+
+__all__ = [
+    "__version__",
+    "anonymize",
+]
