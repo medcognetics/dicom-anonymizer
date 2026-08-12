@@ -1,5 +1,11 @@
 # DicomAnonymizer
 
+> `dicom-anon` is a fork of Kitware Medical's
+> [`dicom-anonymizer`](https://github.com/KitwareMedical/dicom-anonymizer) and
+> contains work originally developed by Kitware Medical and its contributors.
+> For new projects, use the maintained upstream package:
+> `pip install dicom-anonymizer`.
+
 Python package to anonymize DICOM files.
 The anonymization answer to the standard . More information about dicom fields for anonymization can be found [here](https://dicom.nema.org/medical/dicom/current/output/html/part15.html#table_E.1-1).
 
@@ -24,7 +30,11 @@ Dicom fields are separated into different groups. Each groups will be anonymized
 
 # How to install it?
 
-Installation can be done via pip `pip install dicom-anonymizer` or conda `conda install -c conda-forge dicom-anonymizer`.
+To install this fork from PyPI, run `pip install dicom-anon`.
+
+For new projects, install the maintained upstream package with
+`pip install dicom-anonymizer` or
+`conda install -c conda-forge dicom-anonymizer`.
 
 
 # Local Development Setup
