@@ -14,8 +14,12 @@ authors = [
 dependencies = ["pydicom", "tqdm", "setuptools>=69.0.2"]
 requires-python = ">=3.8"
 readme = "README.md"
-license = { text = "Apache" }
+license = { text = "BSD-3-Clause" }
 dynamic = ["version"]
+
+[project.urls]
+Repository = "https://github.com/medcognetics/dicom-anonymizer"
+Upstream = "https://github.com/KitwareMedical/dicom-anonymizer"
 
 [tool.autoflake]
 remove-all-unused-imports = true
